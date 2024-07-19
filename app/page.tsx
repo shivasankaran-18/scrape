@@ -10,6 +10,7 @@ async function fn()
   res.sort((a,b)=>parseInt(a.regNo.slice(4))-parseInt(b.regNo.slice(4)))
   return res
 }
+let val=0;
 
 export default async function Component() {
   const res=await fn()
@@ -42,7 +43,7 @@ export default async function Component() {
               </TableHeader>
               <TableBody>
                 {res.map((data)=>{
-                  return <TableRow>
+                  return <TableRow key={data.id}>
                   <TableCell className="font-medium">{data.regNo}</TableCell>
                   <TableCell>{data.name}</TableCell>
                   <TableCell className="text-right">{data.gpa}</TableCell>
